@@ -3,12 +3,11 @@ import { Text, View, StyleSheet, Button, TextInput, Modal } from "react-native";
 import { styles } from "./Style/StyleSheet";
 
 export default function App() {
-  const [name, setName] = useState();
-  const [text, setText] = useEffect();
+  const [text, setText] = useState("");
 
-  useEffect(()=> {
+  useEffect(() => {
     if (text.length === 28) {
-      alert('Atenção', 'Texto já atingiu 10 caracteres')
+      alert("Atenção! O Texto já atingiu 10 caracteres");
     }
   }, [text]);
 
