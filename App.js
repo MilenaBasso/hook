@@ -3,33 +3,43 @@ import { Text, View, StyleSheet, Button, TextInput, Modal } from "react-native";
 import { styles } from "./Style/StyleSheet";
 
 export default function App() {
-  // const [count, setCount] = useState(0);
   const [name, setName] = useState();
+  const [text, setText] = useEffect();
 
-  // incrementCount = () => {
-  //   setCount(count + 1);
-  // };
+  useEffect(()=> {
+    if (text.length === 28) {
+      alert('Atenção', 'Texto já atingiu 10 caracteres')
+    }
+  }, [text]);
 
-  // decrementCount = () => {
-  //   setCount(count - 1);
-  // };
-
-  changeTxt = (name) => {
-    setName(`Seja bem-vindo, ${name}.`);
+  changeTxt = (text) => {
+    setText(`Seja bem-vindo, ${text}.`);
   };
 
   return (
     <View style={styles.container}>
-      {/* <Text>Contador: {count}</Text> */}
-      {/* <Button title="Increment" onPress={incrementCount} />
-      <Button title="Decrement" onPress={decrementCount} /> */}
       <TextInput
         placeholder="Digite seu nome"
         style={styles.input}
         onChangeText={changeTxt}
-        maxLength={10}
+        maxLength={15}
       />
-      <Text>{name}</Text>
+
+      <Text>{text}</Text>
     </View>
+
+    // const [count, setCount] = useState(0);
+
+    // incrementCount = () => {
+    //   setCount(count + 1);
+    // };
+
+    // decrementCount = () => {
+    //   setCount(count - 1);
+    // };
+
+    /* <Text>Contador: {count}</Text> */
+    /* <Button title="Increment" onPress={incrementCount} />
+      <Button title="Decrement" onPress={decrementCount} /> */
   );
 }
